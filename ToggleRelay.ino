@@ -40,7 +40,7 @@ class MyServerCallbacks : public BLEServerCallbacks {
 void setup() {
   Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
-  BLEDevice::init("DoorGate");
+  BLEDevice::init("ToggleRelay");
   pServer = BLEDevice::createServer();
   pServer->setCallbacks(new MyServerCallbacks());
   BLEService *pService = pServer->createService(SERVICE_UUID);
@@ -77,6 +77,7 @@ void loop() {
 
   // connecting
   if (deviceConnected && !oldDeviceConnected) {
+    
     // do stuff here on connecting
     oldDeviceConnected = deviceConnected;
   }
